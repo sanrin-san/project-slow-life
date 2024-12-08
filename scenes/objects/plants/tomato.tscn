@@ -1,0 +1,40 @@
+[gd_scene load_steps=11 format=3 uid="uid://bjooaekyai6ja"]
+
+[ext_resource type="Script" path="res://scenes/objects/plants/tomato.gd" id="1_sfdna"]
+[ext_resource type="Texture2D" uid="uid://c60texwn2euun" path="res://assets/game/objects/basic_plants.png" id="2_xe3rb"]
+[ext_resource type="PackedScene" uid="uid://4bacidqxmfas" path="res://scenes/objects/plants/watering_particles.tscn" id="3_7wy65"]
+[ext_resource type="PackedScene" uid="uid://mc88k2vty5jy" path="res://scenes/objects/plants/flowering_particles.tscn" id="4_n1dtf"]
+[ext_resource type="PackedScene" uid="uid://bwow7i327ckds" path="res://scenes/objects/plants/growth_cycle_component.tscn" id="5_bbnxn"]
+[ext_resource type="PackedScene" uid="uid://ks3udaxuyh0p" path="res://scenes/components/hurt_component.tscn" id="6_tq2pc"]
+[ext_resource type="Script" path="res://scenes/objects/plants/collision_shape_2d.gd" id="7_rio8o"]
+[ext_resource type="PackedScene" uid="uid://6k6ltlsih01u" path="res://scenes/components/save_data_component.tscn" id="8_7ebhp"]
+[ext_resource type="Resource" uid="uid://x1w4he0g7p7s" path="res://resources/scene_data_resource.tres" id="9_hnrrm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfh3u"]
+size = Vector2(14, 11)
+
+[node name="Tomato" type="Node2D"]
+script = ExtResource("1_sfdna")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xe3rb")
+hframes = 6
+vframes = 2
+frame = 7
+
+[node name="WateringParticles" parent="." instance=ExtResource("3_7wy65")]
+
+[node name="FloweringParticles" parent="." instance=ExtResource("4_n1dtf")]
+
+[node name="GrowthCycleComponent" parent="." instance=ExtResource("5_bbnxn")]
+
+[node name="HurtComponent" parent="." instance=ExtResource("6_tq2pc")]
+tool = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_xfh3u")
+script = ExtResource("7_rio8o")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("8_7ebhp")]
+save_data_resource = ExtResource("9_hnrrm")

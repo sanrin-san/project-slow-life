@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://rndr13wyqis3"]
+
+[ext_resource type="Theme" uid="uid://ctbww001u4vn5" path="res://scenes/ui/game_ui_theme.tres" id="1_tvsop"]
+[ext_resource type="PackedScene" uid="uid://ddxgn5dofn6u7" path="res://scenes/ui/emotes_panel.tscn" id="2_rmi6d"]
+[ext_resource type="PackedScene" uid="uid://d3xes2grjs3f0" path="res://scenes/ui/tools_panel.tscn" id="2_w2ife"]
+[ext_resource type="PackedScene" uid="uid://dkgynkq6p30bt" path="res://scenes/ui/inventory_panel.tscn" id="3_4a3hc"]
+[ext_resource type="PackedScene" uid="uid://d4ecvcyecxucj" path="res://scenes/ui/day_and_night_panel.tscn" id="4_walpm"]
+
+[node name="GameScreen" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tvsop")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="EmotesPanel" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rmi6d")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InventoryPanel" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_4a3hc")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ToolsPanel" parent="MarginContainer" instance=ExtResource("2_w2ife")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="DayAndNightPanel" parent="MarginContainer" instance=ExtResource("4_walpm")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
