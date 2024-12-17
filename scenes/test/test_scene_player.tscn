@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://d184enuufamet"]
+[gd_scene load_steps=7 format=4 uid="uid://d184enuufamet"]
 
 [ext_resource type="TileSet" uid="uid://t22quv3d6d2t" path="res://Tilesets/game_tile_set.tres" id="1_32ucc"]
 [ext_resource type="PackedScene" uid="uid://c72alqeet4c3b" path="res://scenes/characters/player/player.tscn" id="2_n84yi"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory.gd" id="3_wanil"]
+[ext_resource type="Resource" uid="uid://b5nn7jtl4ea3p" path="res://resources/item_protoset.tres" id="4_ktqvx"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="5_y24lj"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory.gd" id="6_pvl6r"]
 
 [node name="TestScenePlayer" type="Node2D"]
 
@@ -17,3 +21,15 @@ tile_set = ExtResource("1_32ucc")
 
 [node name="Player" parent="." instance=ExtResource("2_n84yi")]
 position = Vector2(90, 187)
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("3_wanil")
+item_protoset = ExtResource("4_ktqvx")
+
+[node name="_Node_24967" type="Node" parent="Inventory"]
+script = ExtResource("5_y24lj")
+protoset = ExtResource("4_ktqvx")
+prototype_id = "minimal_item"
+
+[node name="Node" type="Node" parent="Inventory"]
+script = ExtResource("6_pvl6r")
